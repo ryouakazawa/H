@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 50px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        animation: bounce 1.2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+    }
+
+    img {
+        width: 200px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    img:hover {
+        transform: scale(1.1);
+    }
+
+    #letter {
+        opacity: 0;
+        visibility: hidden;
+        margin-top: 30px;
+        padding: 20px;
+        background: #111;
+        border-radius: 10px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        text-align: left;
+        transition: opacity 1s ease;
+    }
+
+    #letter.show {
+        opacity: 1;
+        visibility: visible;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>Click ↓</h2>
+
+<img src="h.png" onclick="startLetter()" alt="Clickable GIF">
+
+<div id="letter">
+    <h3>H is for <b>Heavenly</b></h3>
+    <p id="text"></p>
+</div>
+
+    <div class="video-link">
+        <p>There’s something I want you to listen to:</p>
+        <a href="https://www.youtube.com/watch?v=uQFVqltOXRg&list=RDuQFVqltOXRg&start_radio=1" target="_blank">
+            Click here to watch
+        </a>
+    </div>
+
+<script>
+const message = `I never realized how much a single person could change the way the world feels until you existed in mine.
+
+It’s not just when you’re around me. It’s the simple fact that you are here, somewhere in this same world, living, breathing, being you. And somehow, that alone makes everything feel lighter, softer, more… possible.
+
+There are days that would’ve felt ordinary, maybe even heavy, but then I remember you exist, and something shifts. It’s subtle, but real. Like the world carries a quiet kind of warmth just because you’re in it. And I find myself holding onto that more than I expected.
+
+It’s strange to say, but your existence feels like a kind of grace I didn’t know I needed. Not something loud or overwhelming, but something steady and comforting, like a reminder that there’s still something beautiful here.
+
+And in that way, without even trying, you make everything feel a little more heavenly to me.
+
+I don’t know if I’ll ever fully explain it right, but I feel it every day.
+
+And I’m grateful you exist.`;
+
+let index = 0;
+
+function typeWriter() {
+    if (index < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeWriter, 25);
+    }
+}
+
+function startLetter() {
+    const letter = document.getElementById("letter");
+    letter.classList.add("show");
+
+    if (index === 0) {
+        typeWriter();
+    }
+}
+</script>
+
+</body>
+</html>
